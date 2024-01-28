@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+
+<body>
+
+    <h2>Login Form</h2>
+
+    <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="button" onclick="submitForm()">Login</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function submitForm() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Make API call to perform authentication
+                const response = await axios.post('http://localhost:3001/auth/login', { email, password });
+
+                // Check if authentication was successful
+                if (response.data && response.data.user) {
+                    // Redirect to home page and display user details
+                    window.location.href = '/home';
+                } else {
+                    // Handle authentication failure (e.g., show an error message)
+                    console.error('Authentication failed');
+                }
+            } catch (error) {
+                // Handle any errors that occurred during the API call
+                console.error('Error during authentication:', error.message);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
