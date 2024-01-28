@@ -7,8 +7,6 @@ Welcome to the MERN Authentication App! This project provides a full-stack authe
 The MERN Authentication App includes the following features:
 
 - User registration and authentication
-- Secure password hashing
-- Token-based authentication using JSON Web Tokens (JWT)
 - Interactive CSS and JavaScript functionalities
 
 ## Prerequisites
